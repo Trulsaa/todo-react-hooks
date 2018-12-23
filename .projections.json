@@ -1,0 +1,37 @@
+{
+  "src/*.tsx": {
+    "type": "component",
+    "template": [
+      "import {open} observer {close} from 'mobx-react';",
+      "import React from 'react';",
+      "",
+      "interface I{} {",
+      "  classes?: any;",
+      "}",
+      "",
+      "const {}: React.SFC<I{}> = props => {",
+      "  const {open} classes {close} = props;",
+      "",
+      "  return <div className={open}classes.base{close}>StationFilterHeader</div>;",
+      "}",
+      "",
+      "export default observer({});"
+    ]
+  },
+  "src/*.ts": {
+    "type": "store",
+    "template": [
+      "import { action, computed, observable } from 'mobx';",
+      "import RootStore from './RootStore'",
+      "",
+      "class {} {",
+      "  constructor() {",
+      "",
+      "  }",
+      "",
+      "}",
+      "",
+      "export default {};"
+    ]
+  }
+}

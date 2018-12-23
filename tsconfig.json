@@ -3,6 +3,8 @@
     "target": "es5",
     "allowJs": true,
     "skipLibCheck": false,
+    "lib": ["es2017", "es7", "dom"],
+    "experimentalDecorators": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
@@ -14,7 +16,5 @@
     "noEmit": true,
     "jsx": "preserve"
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }
