@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { useState } from "react";
 
-import Todo from './Todo';
+import Layout from "./Layout";
+
+// @ts-ignore
+export const Store = React.createContext();
 
 const App = () => {
+  const [todos, setTodos] = useState([]);
+  const [input, setInput] = useState("");
+  const [showLoreum, setShowLoreum] = useState(true);
+
   return (
-    <Todo />
+    <Store.Provider
+      value={{ todos, setTodos, input, setInput, showLoreum, setShowLoreum }}
+    >
+      <Layout />
+    </Store.Provider>
   );
 };
 
