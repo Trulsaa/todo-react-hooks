@@ -14,7 +14,7 @@ const Layout = () => {
     input,
     setInput,
     showLoreum,
-    setShowLoreum
+    toggleLoreum
   } = useContext(Store);
   const inputEl = useRef(null);
 
@@ -25,7 +25,7 @@ const Layout = () => {
     });
   };
 
-  const onLoremToggle = () => setShowLoreum(!showLoreum);
+  const onLoremToggle = () => toggleLoreum();
 
   const addToList = (e: any) => {
     if (e.key === "Enter") {

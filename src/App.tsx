@@ -34,15 +34,21 @@ function useWindowSize() {
   return windowSize;
 }
 
+function useToggle(initialState: boolean) {
+  const [isState, setToggle] = useState(initialState);
+  const toggle = () => setToggle(!isState);
+  return [isState, toggle];
+}
+
 const App = () => {
   const [todos, setTodos] = useState([]);
   const [input, setInput] = useState("");
-  const [showLoreum, setShowLoreum] = useState(true);
+  const [showLoreum, toggleLoreum] = useToggle(true);
   const size = useWindowSize();
 
   return (
     <Store.Provider
-      value={{ todos, setTodos, input, setInput, showLoreum, setShowLoreum }}
+      value={{ todos, setTodos, input, setInput, showLoreum, toggleLoreum }}
     >
       <div>
         {size.width}px / {size.height}px
