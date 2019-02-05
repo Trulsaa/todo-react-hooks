@@ -1,10 +1,43 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 interface ILoreum {
   classes?: any;
 }
 
+function useHover() {
+  const [value, setValue] = useState(false);
+
+  const ref = useRef(null);
+
+  const handleMouseOver = () => setValue(true);
+  const handleMouseOut = () => setValue(false);
+
+  useEffect(
+    () => {
+      const node = ref.current;
+      if (node) {
+        // @ts-ignore
+        node.addEventListener("mouseover", handleMouseOver);
+        // @ts-ignore
+        node.addEventListener("mouseout", handleMouseOut);
+
+        return () => {
+          // @ts-ignore
+          node.removeEventListener("mouseover", handleMouseOver);
+          // @ts-ignore
+          node.removeEventListener("mouseout", handleMouseOut);
+        };
+      }
+    },
+    [ref.current] // Recall only if ref changes
+  );
+
+  return [ref, value];
+}
+
 const Loreum: React.SFC<ILoreum> = props => {
+  const [hoverRef, isHovered] = useHover();
+
   useEffect(() => {
     console.log("render Loreum");
     return () => console.log("unmounting Loreum...");
@@ -13,7 +46,9 @@ const Loreum: React.SFC<ILoreum> = props => {
   return (
     <>
       <h2>Loreum component that has a useEffect hook</h2>
-      <p>
+      {/*
+      // @ts-ignore **/}
+      <p ref={hoverRef} style={{ color: isHovered ? "red" : "black" }}>
         Elit quo asperiores quod maxime quis quia. Nulla eveniet nihil animi
         laborum dolorem. Iure impedit magnam nulla vel minus officiis Doloremque
         soluta laboriosam delectus sunt nihil, earum Repudiandae eaque minima

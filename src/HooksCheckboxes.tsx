@@ -4,36 +4,39 @@ interface IHooksCheckboxes {
   classes?: any;
 }
 
+const CheckBox = (props: { hook: string; checked: boolean }) => (
+  <>
+    <input
+      type="checkbox"
+      name="hook"
+      value={props.hook}
+      checked={props.checked}
+    />
+    {props.hook}
+    <br />
+  </>
+);
+
 const HooksCheckboxes: React.SFC<IHooksCheckboxes> = props => {
+  const hooks = [
+    { hook: "useState", checked: true },
+    { hook: "useEffect", checked: true },
+    { hook: "useContext", checked: true },
+    { hook: "useReducer", checked: false },
+    { hook: "useCallback", checked: false },
+    { hook: "useMemo", checked: true },
+    { hook: "useRef", checked: true },
+    { hook: "useImperativeMethods", checked: false },
+    { hook: "useLayoutEffect", checked: false },
+    { hook: "useWindowSize", checked: true },
+    { hook: "useHover", checked: true }
+  ];
+
   return (
     <>
-      <input type="checkbox" name="hook" value="useState" checked />
-      useState
-      <br />
-      <input type="checkbox" name="hook" value="useEffect" checked />
-      useEffect
-      <br />
-      <input type="checkbox" name="hook" value="useContext" checked />
-      useContext
-      <br />
-      <input type="checkbox" name="hook" value="useReducer" />
-      useReducer
-      <br />
-      <input type="checkbox" name="hook" value="useCallback" />
-      useCallback
-      <br />
-      <input type="checkbox" name="hook" value="useMemo" />
-      useMemo
-      <br />
-      <input type="checkbox" name="hook" value="useRef" checked />
-      useRef
-      <br />
-      <input type="checkbox" name="hook" value="useImperativeMethods" />
-      useImperativeMethods
-      <br />
-      <input type="checkbox" name="hook" value="useLayoutEffect" />
-      useLayoutEffect
-      <br />
+      {hooks.map((hook: { hook: string; checked: boolean }) => (
+        <CheckBox {...hook} />
+      ))}
     </>
   );
 };
