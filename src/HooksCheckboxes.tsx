@@ -24,7 +24,7 @@ const HooksCheckboxes: React.SFC<IHooksCheckboxes> = props => {
     { hook: "useContext", checked: true },
     { hook: "useReducer", checked: false },
     { hook: "useCallback", checked: false },
-    { hook: "useMemo", checked: true },
+    { hook: "useMemo", checked: false },
     { hook: "useRef", checked: true },
     { hook: "useImperativeMethods", checked: false },
     { hook: "useLayoutEffect", checked: false },
